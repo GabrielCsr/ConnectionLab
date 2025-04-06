@@ -1,0 +1,12 @@
+{
+	"name": "ConnectionLab",
+	"description": "Solução centralizada para gerenciamento de conexões com diversos sistemas.",
+	"version": "1.0.0",
+	"homepage": "https://github.com/GabrielCsr/ConnectionLab",
+	"mainsrc": "./src",
+	"projects": [],
+	"dependencies": {
+		"https://github.com/gabrielcsr/brokerx": ">0.0.0",
+		"https://github.com/gabrielcsr/fastredis": ">0.0.0"
+	}
+}

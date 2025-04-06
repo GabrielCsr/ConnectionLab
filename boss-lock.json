@@ -1,0 +1,46 @@
+{
+	"hash": "d41d8cd98f00b204e9800998ecf8427e",
+	"updated": "2025-04-05T19:45:00.3373986-03:00",
+	"installedModules": {
+		"https://github.com/brendenwalker/delphi_amqp": {
+			"name": "delphi_amqp",
+			"version": "main",
+			"hash": "79302f7430cedb3e714a25e186da69a2",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"https://github.com/danieleteti/delphiredisclient": {
+			"name": "delphiredisclient",
+			"version": "v2.2",
+			"hash": "d56fa90792fa7f255deac3872c2ef839",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"https://github.com/danieleteti/delphistompclient": {
+			"name": "delphistompclient",
+			"version": "master",
+			"hash": "cb6937b7758328924988f916cc4ddbbb",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"https://github.com/gabrielcsr/brokerx": {
+			"name": "brokerx",
+			"version": "main",
+			"hash": "d1edac12982fa3e5b2fa3f789681748e",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"https://github.com/gabrielcsr/fastredis": {
+			"name": "fastredis",
+			"version": "main",
+			"hash": "e99f2909f6cf787a4f8c50700dd4b11b",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		}
+	}
+}
