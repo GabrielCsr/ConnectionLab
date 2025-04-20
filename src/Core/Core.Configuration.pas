@@ -27,6 +27,8 @@ type
     function ParseJSONConfig(const AJSONContent: string): Boolean;
     procedure CreateFileWithDefaultParams;
     function LoadFromFile(const AFilePath: string): Boolean;
+    procedure LoadFromEnvironmentVariables;
+
   public
     constructor Create;
     class function New: IConfiguration;
@@ -47,9 +49,40 @@ begin
   FRabbitMQStomp := TRabbitMQConfig.New;
   FRabbitMQAMQP := TRabbitMQConfig.New;
 
+  {$IFDEF MSWINDOWS}
   FConfigFilePath := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0))) + 'connection.json';
   CreateFileWithDefaultParams;
   LoadFromFile(FConfigFilePath);
+  {$ELSE}
+    LoadFromEnvironmentVariables;
+  {$ENDIF}
+end;
+
+procedure TConfiguration.LoadFromEnvironmentVariables;
+begin
+  FPostgreSQL
+    .Host(GetEnvironmentVariable('POSTGRES_HOST'))
+    .Port(StrToIntDef(GetEnvironmentVariable('POSTGRES_PORT'), 5432))
+    .Database(GetEnvironmentVariable('POSTGRES_DB'))
+    .User(GetEnvironmentVariable('POSTGRES_USER'))
+    .Password(GetEnvironmentVariable('POSTGRES_PASSWORD'));
+
+  FRedis
+    .Host(GetEnvironmentVariable('REDIS_HOST'))
+    .Port(StrToIntDef(GetEnvironmentVariable('REDIS_PORT'), 6379));
+
+
+  FRabbitMQStomp
+    .Host(GetEnvironmentVariable('RABBITMQ_HOST'))
+    .Port(StrToIntDef(GetEnvironmentVariable('RABBITMQ_PORT_STOMP'), 61613))
+    .User(GetEnvironmentVariable('RABBITMQ_USER'))
+    .Password(GetEnvironmentVariable('RABBITMQ_PASSWORD'));
+
+  FRabbitMQAMQP
+    .Host(GetEnvironmentVariable('RABBITMQ_HOST'))
+    .Port(StrToIntDef(GetEnvironmentVariable('RABBITMQ_PORT_AMQP'), 5672))
+    .User(GetEnvironmentVariable('RABBITMQ_USER'))
+    .Password(GetEnvironmentVariable('RABBITMQ_PASSWORD'));
 end;
 
 class function TConfiguration.New: IConfiguration;
